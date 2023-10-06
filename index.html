@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    .output {
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+        <div class="container mt-5">
+            <div class="card-header">
+                Apigee X API Proxy/Shared flow Online Linting Tool
+              </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Upload zip bundle</h5>
+                    <input type="file" class="form-control mb-3" id="fileInput">
+                    <button class="btn btn-primary" onclick="uploadFile()">Start Linting</button>
+                </div>
+            </div>
+
+            <div id="output" class="mt-5"></div>
+        </div>
+
+        <div class="modal" tabindex="-1" role="dialog" id="errorModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Error</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please select a file to upload</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+
+    <script type="text/javascript">
+        function uploadFile() {
+            const fileInput = document.getElementById('fileInput');
+            const file = fileInput.files[0];
+
+            if (!file) {
+                $('#errorModal').modal('show');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            $.ajax({
+                url: '/upload',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $('#output').html(`<div class="alert alert-success output"><pre>${data}</pre></div>`);
+                },
+                error: function (error) {
+                    console.error("There was an error processing the file!", error);
+                }
+            });
+        }
+    </script>
+
+</body>
+
+</html>
