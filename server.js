@@ -28,40 +28,37 @@ app.post('/upload', upload.single('file'), (req, res) => {
     const extractPath = path.join(__dirname, 'extracted-' + req.file.originalname);
     zip.extractAllTo(extractPath, true);
 
-    //const targetFile = path.join(extractPath, 'example.txt');
+    const command = `apigeelint -s "${extractPath}"/apiproxy -f table.js `;
 
-        const command = `apigeelint -s "${extractPath}"/apiproxy -f table.js `;
+    exec(command, (error, stdout, stderr) => {
+        if (error) {
+            console.log(`Error: ${error}`);
+            return res.send(error);
+        }
 
-        exec(command, (error, stdout, stderr) => {
-            if (error) {
-                console.log(`Error: ${error}`);
-                return res.send(error);
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return res.send(stderr);
+        }
+
+        // Delete the extracted folder after processing the bundle
+        fs.rm(extractPath, { recursive: true, force: true }, (err) => {
+            if (err) {
+                console.error(`Error deleting extracted folder: ${err}`);
             }
-
-            if (stderr) {
-                console.log(`stderr: ${stderr}`);
-                return res.send(stderr);
-            }
-
-            // Delete the extracted folder after reading the file
-            fs.rm(extractPath, { recursive: true, force: true }, (err) => {
-                if (err) {
-                    console.error(`Error deleting extracted folder: ${err}`);
-                    // You can choose whether to send an error message to the client or not
-                }
-            });
-
-            // Delete the uploaded zip file
-            fs.unlink(filePath, (err) => {
-                if (err) {
-                    console.error(`Error deleting zip file: ${err}`);
-                }
-            });
-
-            res.send(stdout);
-
         });
- //   });
+
+        // Delete the uploaded zip file
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error(`Error deleting zip file: ${err}`);
+            }
+        });
+
+        res.send(stdout);
+
+    });
+
 });
 
 app.listen(port, () => {

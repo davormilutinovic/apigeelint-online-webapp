@@ -8,6 +8,17 @@
         border: 1px solid #ccc;
         padding: 10px;
     }
+
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: #f1f1f1;
+        color: black;
+        text-align: center;
+        padding: 10px;
+    }
 </style>
 
 <head>
@@ -22,40 +33,45 @@
 
 <body>
 
-        <div class="container mt-5">
-            <div class="card-header">
-                Apigee X API Proxy/Shared flow Online Linting Tool
-              </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Upload zip bundle</h5>
-                    <input type="file" class="form-control mb-3" id="fileInput">
-                    <button class="btn btn-primary" onclick="uploadFile()">Start Linting</button>
-                </div>
-            </div>
-
-            <div id="output" class="mt-5"></div>
+    <div class="container mt-5">
+        <div class="card-header">
+            Apigee X API Proxy/ Shared flow Online Linting Tool
         </div>
-
-        <div class="modal" tabindex="-1" role="dialog" id="errorModal">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Error</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Please select a file to upload</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Upload zip bundle</h5>
+                <input type="file" class="form-control mb-3" id="fileInput">
+                <button class="btn btn-primary" onclick="uploadFile()">Start Linting</button>
             </div>
         </div>
-        
+
+        <div id="output" class="mt-5"></div>
+    </div>
+
+    <div class="modal" tabindex="-1" role="dialog" id="errorModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Please select a file to upload</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Created by <strong>Davor Milutinovic</strong>
+            Check the project on <a href="https://github.com/davormilutinovic/apigeelint-online-webapp"
+                target="_blank">GitHub</a></p>
+    </div>
 
 
     <script type="text/javascript">

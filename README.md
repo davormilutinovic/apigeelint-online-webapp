@@ -2,7 +2,7 @@
 [![Apache 2.0](https://img.shields.io/badge/license-apache%202.0-blue.svg)](LICENSE)
 ![Node](https://img.shields.io/node/v/apigeelint.svg)
 
-Apigeelint is command line linting tool for Apigee API Proxies and Sharedflows. This is just a webapp wrapper for this tool.
+Apigeelint is command line linting tool for Apigee API Proxies and Sharedflows. This is just a simple webapp wrapper for this tool.
 
 
 You can find apigeelint repo here [apigeelint](https://github.com/apigee/apigeelint).
