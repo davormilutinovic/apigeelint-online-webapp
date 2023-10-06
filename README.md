@@ -2,7 +2,7 @@
 [![Apache 2.0](https://img.shields.io/badge/license-apache%202.0-blue.svg)](LICENSE)
 ![Node](https://img.shields.io/node/v/apigeelint.svg)
 
-Apigeelint is command line linting tool for Apigee API Proxies and Sharedflows. This is just a simple webapp wrapper for this tool.
+Apigeelint is command line linting tool for Apigee API Proxies. This is just a simple webapp wrapper for this tool.
 
 
 You can find apigeelint repo here [apigeelint](https://github.com/apigee/apigeelint).
@@ -13,7 +13,7 @@ At this point, this webapp is using table formatter and has just a basic functio
 
 You can test it here [apigeelint-online-webapp](https://apigeelint-online-webapp.onrender.com/)
 
-> **Note** : Demo runs on free and slow instance. Be patient, it will need few seconds to process the bundle.
+> **Note** : Demo runs on free and slow instance. Be patient, it will need few seconds to spinn up the instance or to process the bundle.
 
 ## Installation
 
@@ -54,7 +54,7 @@ If you use it locally you can install apigeellint using npm. But, there is a min
 ## Usage
 
 1. Go to http://localhost:3000 in your browser
-2. Upload you Apigee API Proxy or Shared flow as zipped bundle (use "Choose File")
+2. Upload you Apigee API Proxy as zipped bundle (use "Choose File")
 3. Select "Start Linting"
 4. The linting result will be presented on screen.
 
