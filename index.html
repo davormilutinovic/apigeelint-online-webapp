@@ -38,11 +38,25 @@
             Apigee X API Proxy Online Linting Tool
         </div>
         <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Upload zip bundle</h5>
-                <input type="file" accept=".zip" class="form-control mb-3" id="fileInput">
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Choose profile</span>
+                <!-- <label for="profile" class="form-label">Choose profile</label> -->
+                <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="profile" id ="profile">
+                    <option value="apigeex">Apigee X</option>
+                    <option value="apigee">Apigee Edge</option>
+                </select>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Upload zip bundle</span>
+                <!-- <label for="fileInput" class="form-label">Upload zip bundle</label> -->
+                <input type="file" accept=".zip" class="form-control" id="fileInput">
+            </div>
+            <div class="input-group mb-3">
                 <button class="btn btn-primary" onclick="uploadFile()">Start Linting</button>
             </div>
+
         </div>
 
         <div id="output" class="mt-5"></div>
@@ -78,6 +92,7 @@
         function uploadFile() {
             const fileInput = document.getElementById('fileInput');
             const file = fileInput.files[0];
+            const profile = document.getElementById('profile').value;
 
             if (!file) {
                 $('#errorModal').modal('show');
@@ -86,9 +101,10 @@
 
             const formData = new FormData();
             formData.append('file', file);
+            $('#output').html(`<div class="alert alert-success output"><pre>Linting started</pre></div>`);
 
             $.ajax({
-                url: '/upload',
+                url: `/upload?profile=${profile}`,
                 type: 'POST',
                 data: formData,
                 processData: false,

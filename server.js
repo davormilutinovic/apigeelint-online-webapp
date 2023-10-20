@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const { exec } = require('child_process');
+const execSync = require('child_process').execSync;
 const path = require('path');
 const fs = require('fs');
 const AdmZip = require('adm-zip');
@@ -38,6 +38,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/upload', upload.single('file'), (req, res) => {
+
     const filePath = path.join(__dirname, req.file.path);
 
     // Extracting the zip file
@@ -56,23 +57,21 @@ app.post('/upload', upload.single('file'), (req, res) => {
         return res.send('Bundle must have either apiproxy or sharedflow directory');
     }
 
-    const command = `apigeelint -s ${extractPath}/${bundleType} -f table.js `;
+    // res.send('Hello');
 
-    exec(command, (error, stdout, stderr) => {
-        if (error) {
-            console.log(`Error: ${error}`);
-            return res.send(error);
-        }
+    const command = `node ./node_modules/apigeelint/cli.js --profile ${req.query.profile} -s ${extractPath}\\${bundleType} -f table.js `;
 
-        if (stderr) {
-            console.log(`stderr: ${stderr}`);
-            return res.send(stderr);
-        }
+    try {
+        var result = execSync(command).toString();
+        //console.log(result);
 
         cleanBundleArtifacts(filePath, extractPath);
-        res.send(stdout);
+        res.send(result);
 
-    });
+    } catch (error) {
+        cleanBundleArtifacts(filePath, extractPath);
+        res.send(error);
+    }
 
 });
 
