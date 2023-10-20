@@ -58,7 +58,7 @@ If you use it locally you can install apigeellint using npm. But, there is a min
 3. Select "Start Linting"
 4. The linting result will be presented on screen.
 
-![Example](./other/sample.png)
+![Example](./other/sample_v2.png)
 
 ## Release Notes
 
