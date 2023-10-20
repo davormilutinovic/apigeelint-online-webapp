@@ -59,7 +59,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
     // res.send('Hello');
 
-    const command = `apigeelint --profile ${req.query.profile} -s ${extractPath}/${bundleType} -f table.js `;
+    const command = `node ./node_modules/apigeelint/cli.js --profile ${req.query.profile} -s ${extractPath}/${bundleType} -f table.js `;
 
     try {
         var result = execSync(command).toString();
@@ -70,7 +70,7 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
     } catch (error) {
         cleanBundleArtifacts(filePath, extractPath);
-        res.send(error);
+        res.send("Error");
     }
 
 });
