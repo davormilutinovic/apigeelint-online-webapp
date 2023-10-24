@@ -8,7 +8,7 @@ const app = express();
 const port = 3000;
 
 const storage = multer.diskStorage({
-    destination: './uploads',
+    destination: './tmp',
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
