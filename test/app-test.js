@@ -3,7 +3,25 @@ const request = require('supertest');
 
 const { app } = require('../server'); // Replace with the path to your Express app file
 
+let server; // Declare a variable to hold the server instance
+
 describe('Apigeelint Web UI App Tests', () => {
+
+    // Before running the tests, start the server
+    before((done) => {
+        server = app.listen(3000, () => {
+            console.log('Server started on port 3000');
+            done();
+        });
+    });
+
+    // After running the tests, close the server
+    after((done) => {
+        server.close(() => {
+            console.log('Server stopped');
+            done();
+        });
+    });
 
     it('should return the index.html file for GET /', (done) => {
         request(app)
@@ -14,6 +32,7 @@ describe('Apigeelint Web UI App Tests', () => {
                 assert.equal(res.type, 'text/html');
                 done();
             });
+
     });
 
     it('should upload a zip file and analyze it for POST /upload', (done) => {

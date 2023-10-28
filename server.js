@@ -63,7 +63,6 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
     try {
         var result = execSync(command).toString();
-        //console.log(result);
 
         cleanBundleArtifacts(filePath, extractPath);
         res.send(result);
@@ -75,14 +74,16 @@ app.post('/upload', upload.single('file'), (req, res) => {
 
 });
 
-app.listen(port, () => {
-    console.log(`Server is running on http://localhost:${port}`);
-});
+// Only start the server if not being used as a module in tests
+if (!module.parent) {
+    app.listen(port, () => {
+        console.log(`Server is running on http://localhost:${port}`);
+    });
 
+};
 
 module.exports = {
-    app, 
-    cleanBundleArtifacts, // Export the cleanBundleArtifacts function
+    app
 };
-//module.exports = app; 
+
 
