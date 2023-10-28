@@ -1,7 +1,7 @@
 const assert = require('chai').assert;
 const request = require('supertest');
 
-const { app } = require('../server'); // Replace with the path to your Express app file
+const { app } = require('../server'); 
 
 let server; // Declare a variable to hold the server instance
 
@@ -38,8 +38,8 @@ describe('Apigeelint Web UI App Tests', () => {
     it('should upload a zip file and analyze it for POST /upload', (done) => {
         request(app)
             .post('/upload')
-            .attach('file', './test/apiproxy-example.zip') // Replace with the path to a test zip file
-            .query({ profile: 'apigee' }) // Replace with a test profile
+            .attach('file', './test/apiproxy-example.zip') 
+            .query({ profile: 'apigee' }) 
             .expect(200)
             .end((err, res) => {
                 if (err) return done(err);

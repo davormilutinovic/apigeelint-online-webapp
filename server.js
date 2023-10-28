@@ -57,8 +57,6 @@ app.post('/upload', upload.single('file'), (req, res) => {
         return res.send('Bundle must have either apiproxy or sharedflow directory');
     }
 
-    // res.send('Hello');
-
     const command = `node ./node_modules/apigeelint/cli.js --profile ${req.query.profile} -s ${extractPath}/${bundleType} -f table.js `;
 
     try {
