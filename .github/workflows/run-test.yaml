@@ -33,4 +33,22 @@ jobs:
       - name: Test status
         run: |
             npm test 
+
+
+      - name: Run tests and collect coverage
+        run: |
+          nyc --reporter=lcov npm run test
+        env:
+          CI: true  # Ensure that NYC generates a coverage report suitable for CI
+
+      - name: Check code coverage
+        run: |
+          COVERAGE_THRESHOLD=80  # Set your desired coverage threshold here
+          ACTUAL_COVERAGE=$(cat coverage/lcov-report/index.html | grep -oP '(?<=<span class="strong">)[0-9]+(?=%</span>)')
+          if [ "$ACTUAL_COVERAGE" -ge "$COVERAGE_THRESHOLD" ]; then
+            echo "Code coverage is above $COVERAGE_THRESHOLD% - Success"
+          else
+            echo "Code coverage is below $COVERAGE_THRESHOLD% - Failure"
+            exit 1
+          fi
     
