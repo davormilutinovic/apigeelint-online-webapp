@@ -42,12 +42,6 @@ jobs:
         env:
           CI: true  # Ensure that NYC generates a coverage report suitable for CI
 
-      - name: Score
-        run: |
-          ACTUAL_COVERAGE=$(cat coverage/lcov-report/index.html | grep -oP '(?<=<span class="strong">)[0-9]+(?=%</span>)')
-          echo "Code coverage is above $COVERAGE_THRESHOLD%"
-
-
       - name: Check code coverage
         run: |
           COVERAGE_THRESHOLD=80  # Set your desired coverage threshold here
