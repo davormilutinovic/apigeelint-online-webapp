@@ -39,12 +39,7 @@ If you use it locally you can install apigeellint using npm. But, there is a min
    npm install npm@latest -g
    ```
 
-2. Then install apigeelint:
-   ```
-   npm install -g apigeelint
-   ```
-
-3. Copy this repo on  your local machine, go to directory and use following commands:
+3. Copy this repo on your local machine, go to directory and use following commands:
    ```
    npm install
    ```
@@ -57,7 +52,7 @@ If you use it locally you can install apigeellint using npm. But, there is a min
 ## Usage
 
 1. Go to http://localhost:3000 in your browser
-2. Upload you Apigee API Proxy as zipped bundle (use "Choose File")
+2. Upload you Apigee API Proxy or Shared flow as zipped bundle (use "Choose File")
 3. Select "Start Linting"
 4. The linting result will be presented on screen.
 
