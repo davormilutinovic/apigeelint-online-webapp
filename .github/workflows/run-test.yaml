@@ -47,7 +47,7 @@ jobs:
           COVERAGE_THRESHOLD=80.00 # Set your desired coverage threshold here
           TEMPV=$(grep -o '<span class="strong">[0-9.]*% </span>' ./coverage/lcov-report/index.html | sed -n '1p' )
           ACTUAL_COVERAGE=$(echo $TEMPV | grep -oE '[0-9]+(\.[0-9]+)?' | awk '{print $1}')
-          if (( $(awk 'BEGIN {print '"$ACTUAL_COVERAGE"' <= '"$COVERAGE_THRESHOLD"'}') )); then
+          if (( $(awk 'BEGIN {print '"$ACTUAL_COVERAGE"' > '"$COVERAGE_THRESHOLD"'}') )); then
             echo "Code coverage is $ACTUAL_COVERAGE% and above $COVERAGE_THRESHOLD% - Success"
           else
             echo "Code coverage is $ACTUAL_COVERAGE% and below $COVERAGE_THRESHOLD% - Failure"
