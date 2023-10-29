@@ -1,6 +1,9 @@
 # apigeelint-online-webapp
 [![Apache 2.0](https://img.shields.io/badge/license-apache%202.0-blue.svg)](LICENSE)
 ![Node](https://img.shields.io/node/v/apigeelint.svg)
+![Mocha test](https://github.com/davormilutinovic/apigeelint-online-webapp/actions/badge.svg)
+
+
 
 Apigeelint is command line linting tool for Apigee API Proxies. This is just a simple webapp wrapper for this tool.
 
