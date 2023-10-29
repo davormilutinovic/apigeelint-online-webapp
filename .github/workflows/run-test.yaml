@@ -1,0 +1,36 @@
+name: Run mocha test
+
+on:
+  # push:
+  #   branches:
+  #     - main 
+  workflow_dispatch: 
+
+jobs:
+
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+        contents: 'read'
+        id-token: 'write'
+    defaults:
+        run: 
+          shell: bash
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18 
+
+      - name: Install dependencies
+        run: |
+            npm install -g npm@latest 
+            npm install 
+      - name: Run mocha test
+        run: |
+            npm test 
+    
