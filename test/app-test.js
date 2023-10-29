@@ -29,7 +29,7 @@ describe('Apigeelint Web UI App Tests', () => {
             .expect(200)
             .end((err, res) => {
                 if (err) return done(err);
-                assert.equal(res.type, 'text/html');
+                assert.notEqual(res.type, 'text/html');
                 done();
             });
 

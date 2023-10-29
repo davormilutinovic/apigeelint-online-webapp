@@ -29,7 +29,7 @@ jobs:
       - name: Install dependencies
         run: |
             npm install -g npm@latest 
-            npm install 
+            npm ci
       - name: Run mocha test
         run: |
             npm test 
