@@ -1,4 +1,4 @@
-name: Run mocha test
+name: test status
 
 on:
   # push:
