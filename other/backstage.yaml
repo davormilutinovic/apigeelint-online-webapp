@@ -2,10 +2,11 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: apigeelint-online-webapp
+  title: apigeelint-online-webapp
 spec:
   type: website
   lifecycle: experimental
-  owner: your-team-name
+  owner: guest
   providesApis: []
   consumesApis: []
   implementsApis: []
