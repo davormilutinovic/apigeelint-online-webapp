@@ -1,0 +1,15 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apigeelint-online-webapp
+spec:
+  type: website
+  lifecycle: experimental
+  owner: your-team-name
+  providesApis: []
+  consumesApis: []
+  implementsApis: []
+  system:
+    type: github
+    owner: davormilutinovic
+    repo: apigeelint-online-webapp
