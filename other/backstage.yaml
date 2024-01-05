@@ -14,5 +14,5 @@ metadata:
 spec:
   type: service
   lifecycle: experimental  # Or 'production', 'development', depending on the stage of your tool
-  owner: guest  # The name of the team that owns this tool
+  owner: team-a  # The name of the team that owns this tool
   system: davor-system  # If this tool is part of a larger system, specify it here
