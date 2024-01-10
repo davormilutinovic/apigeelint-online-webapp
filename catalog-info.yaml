@@ -1,7 +1,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: apigeelint-online-webapp
+  name: apigeelint-online-webapp_v2
   description: "Apigeelint is command line linting tool for Apigee API Proxies and Shared flows. This is a simple webapp wrapper for this tool."
   tags:
     - nodejs
