@@ -2,7 +2,7 @@ site_name: 'Davor techdoc example'
 site_description: 'Description'
 
 nav:
-- Introduction: readme.md
+- Introduction: README.md
 
 plugins:
 - techdocs-core
