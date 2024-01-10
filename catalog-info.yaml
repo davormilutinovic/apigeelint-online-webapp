@@ -1,0 +1,20 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: apigeelint-online-webapp
+  description: "Apigeelint is command line linting tool for Apigee API Proxies and Shared flows. This is a simple webapp wrapper for this tool."
+  tags:
+    - nodejs
+    - cli
+  links:
+    - url: https://github.com/davormilutinovic/apigeelint-online-webapp/blob/main/README.md
+      title: Documentation
+    - url: https://github.com/davormilutinovic/apigeelint-online-webapp/blob/main
+      title: Homepage
+  annotations:
+    backstage.io/techdocs-ref: dir:../
+spec:
+  type: service
+  lifecycle: experimental  # Or 'production', 'development', depending on the stage of your tool
+  owner: team-a  # The name of the team that owns this tool
+  system: davor-system  # If this tool is part of a larger system, specify it here
