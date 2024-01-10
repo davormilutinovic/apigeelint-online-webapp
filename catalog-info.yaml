@@ -12,7 +12,7 @@ metadata:
     - url: https://github.com/davormilutinovic/apigeelint-online-webapp/blob/main
       title: Homepage
   annotations:
-    backstage.io/techdocs-ref: dir:../
+    backstage.io/techdocs-ref: dir:.
 spec:
   type: service
   lifecycle: experimental  # Or 'production', 'development', depending on the stage of your tool
