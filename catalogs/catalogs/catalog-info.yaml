@@ -2,7 +2,7 @@
 apiVersion: backstage.io/v1alpha1
 kind: Location
 metadata:
-  name: location.zurichinsurance-DevHub-Test-project-2-laoban-package-json
+  name: zurichinsurance-DevHub-Test-project-2-laoban-package-json
 spec:
   type: url
   targets:
