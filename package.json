@@ -4,7 +4,7 @@
   "description": "Apigeelint is command line linting tool for Apigee API Proxies and Sharedflows. This is just a simple webapp wrapper for this tool.",
   "main": "server.js",
   "dependencies": {
-    "adm-zip": "^0.5.10",
+    "adm-zip": "^0.5.13",
     "apigeelint": "^2.49.0",
     "body-parser": "^1.20.2",
     "express": "^4.18.3",
